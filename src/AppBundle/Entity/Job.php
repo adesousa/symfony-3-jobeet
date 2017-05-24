@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="job")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\JobRepository")
  */
 class Job
 {
@@ -547,4 +548,3 @@ class Job
         // Add your code here
     }
 }
-

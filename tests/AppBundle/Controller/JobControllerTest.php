@@ -4,18 +4,18 @@ namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class JobControllerTest extends WebTestCase
 {
 	/**
-	 * Test fonctionnel du controleur Default et de l'action index
+	 * Test fonctionnel du controleur Job et de l'action index
 	 */
     public function testIndex()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/job/');
 
         // 2 asserts
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h2')->text());
+        $this->assertContains('Jobs list', $crawler->filter('h1')->text());
     }
 }

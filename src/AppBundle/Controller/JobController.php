@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Job;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Job controller.
@@ -20,14 +21,15 @@ class JobController extends Controller
      * @Route("/", name="job_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $jobs = $em->getRepository('AppBundle:Job')->findAll();
+        $total = $em->getRepository('AppBundle:Job')->countJobs();
 
         return $this->render('AppBundle:job:index.html.twig', array(
-            'jobs' => $jobs,
+            'jobs'  => $jobs,
+            'total' => $total,
         ));
     }
 

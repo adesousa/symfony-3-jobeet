@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="affiliate")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AffiliateRepository")
  */
 class Affiliate
 {
@@ -213,4 +214,3 @@ class Affiliate
         $this->created_at = new \DateTime();
     }
 }
-

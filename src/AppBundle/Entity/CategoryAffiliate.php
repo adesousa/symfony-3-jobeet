@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="category_affiliate")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryAffiliateRepository")
  */
 class CategoryAffiliate
 {
@@ -101,4 +102,3 @@ class CategoryAffiliate
         return $this->affiliate;
     }
 }
-

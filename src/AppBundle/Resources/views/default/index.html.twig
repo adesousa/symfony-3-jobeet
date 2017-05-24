@@ -1,10 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+                <h1>
+                    <span>
+                    {% if greetings is defined %}
+                        {{ greetings }}{{ name }}
+                    {% endif %}
+                    </span>
+                </h1>
+                <h2><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h2>
             </div>
 
             <div id="status">

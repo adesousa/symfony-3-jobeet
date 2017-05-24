@@ -1,0 +1,37 @@
+default:
+    suites:
+        joblist:
+            paths:
+                - %paths.base%/features/joblist
+            contexts:
+                - AppBundle\Tests\Behat\Context\CoreContext
+        contact:
+            paths:
+                - %paths.base%/features/contact
+            contexts:
+                - AppBundle\Tests\Behat\Context\CoreContext
+    extensions:
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            base_url: "dev.jobeet.com"
+            selenium2:
+                browser: chrome
+                wd_host: 'http://selenium-host:4444/wd/hub'
+            default_session: selenium2
+        emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+            name: html
+            renderer: Twig,Behat2
+            file_name: index
+            print_args: true
+            print_outp: true
+            loop_break: true
+    formatters:
+        pretty: ~
+        html:
+            output_path: %paths.base%/web/reports/behat
+
+preprod:
+    extensions:
+        Behat\MinkExtension:
+            base_url: preprod.jobeet.com
+

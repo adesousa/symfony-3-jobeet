@@ -49,9 +49,23 @@ Industrialisation Niveau 3
 Industrialisation Niveau 4
 ===
 
-1. Installation de Behat
-2. Lancer les tests existants: bin/behat
-3. Développement de quelques tests d'acceptation sur les 2 dernières stories développées (couvrir les critères d'acceptation demandés par le Product Owner), plus d'aide ici : [http://www.jpsymfony.com/tests/behat-3-et-mink-avec-symfony2]
+1. Installation de Behat en ajoutant ces lignes au fichier composer.json dans la section require-dev :
+	"behat/behat": "~3.1",
+    "behat/symfony2-extension": "~2.1",
+    "behat/mink": "~1.7",
+    "behat/mink-extension": "~2.2",
+    "behat/mink-selenium2-driver": "~1.3",
+    "emuse/behat-html-formatter": "dev-master"
+2. Autoload des contextes behat en ajoutant cette ligne au fichier composer.json dans la section psr-4
+    "AppBundle\\Tests\\Behat\\Context\\": "features/context/"
+3. On met à jour notre projet pour qu'il prenne en compte behat: php composer.phar update
+4. Lancer les tests existants de la fonctionalité joblist par exemple: ./vendor/bin/behat --suite=joblist
+5. Consulter ensuite la sortie des tests en html ici : web/reports/behat
+3. Développement de quelques tests d'acceptation sur les stories développées "Contact" et "Menu (de la page joblist)" (couvrir les critères d'acceptation demandés par le Product Owner), plus d'aide ici : [http://www.jpsymfony.com/tests/behat-3-et-mink-avec-symfony2]
+	- Quelques précisions:
+		-> Un dossier feature correpond à une fonctionnalité (feature Scrum)
+		-> Un fichier .feature correspond à une User Story Scrum
+		-> Un à n scénario Gherkin d'un ".feature" correspondent à la couverture d'un critère d'acceptation en Scrum
 
 
 

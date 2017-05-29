@@ -3,21 +3,28 @@ default:
         joblist:
             paths:
                 - %paths.base%/features/joblist
+            # mink_session: selenium2 # Uncomment if you want to differ from default_session
             contexts:
                 - AppBundle\Tests\Behat\Context\CoreContext
         contact:
             paths:
                 - %paths.base%/features/contact
+            # mink_session: selenium2 # Uncomment if you want to differ from default_session
             contexts:
                 - AppBundle\Tests\Behat\Context\CoreContext
     extensions:
         Behat\Symfony2Extension: ~
         Behat\MinkExtension:
-            base_url: "dev.jobeet.com"
-            selenium2:
-                browser: chrome
-                wd_host: 'http://selenium-host:4444/wd/hub'
-            default_session: selenium2
+            base_url: http://dev.jobeet.com/app_dev.php
+            browser_name: chrome
+            sessions:
+                selenium2: # fast, CLI, opens up a browser
+                    selenium2:
+                        browser: chrome
+                        wd_host: 'http://localhost:4444/wd/hub'
+                symfony2: # bleeding fast, CLI, no browser
+                    symfony2: ~
+            default_session: selenium2 # Change to symfony2 if you want to launch without browser by default
         emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
             name: html
             renderer: Twig,Behat2

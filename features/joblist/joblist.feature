@@ -7,4 +7,7 @@ Feature: Amélioration de l'expérience utilisateur de la Liste des Jobs
 # Ici créer 1 à n scénarios qui vont valider les critères d'acceptation du product owner
 Scenario: Infos essentielles présentes
     Given I am on "/job"
-    Then I should see "Jobs list"
+    Then I should see a "h1" element
+    Then I should see a "h2" element
+    And the "h1" element should contain "Jobs list"
+    And the "h2" element should contain "Total jobs currently available"

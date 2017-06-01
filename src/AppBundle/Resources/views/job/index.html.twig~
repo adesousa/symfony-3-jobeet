@@ -56,7 +56,6 @@
                 </td>
             </tr>
         {% endfor %}
-	<footer style="color: blue;> Ceci est un pied de page </footer>
         </tbody>
     </table>
 
